@@ -43,8 +43,8 @@ class UserController extends BaseController {
     }
 
     public function index(Request $request) {
-        $page = $request->has('page') ? $request->get('page') : 1;
-        $limit = $request->has('limit') ? $request->get('limit') : 2;
+         $page = $request->has('page') ? $request->get('page') : 1;
+        $limit = $request->has('limit') ? $request->get('limit') : 10;
         $users = User::limit($limit)->offset(($page - 1) * $limit)->get();
         return $this->sendResponse(UserResource::collection($users), 'Users retrieved successfully.');
     }
